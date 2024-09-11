@@ -1,4 +1,11 @@
 import React from "react";
+import DescriptionInfo from "./descriptionInfo";
+import PeopleComponent from "./peopleComponent";
+import VehicleComponent from "./vehicleComponent";
+import StarShipComponent from "./starsshipComponent";
+import SpeciesComponent from "./speciesComponent";
+import PlanetComponent from "./planetComponent";
+import FilmComponent from "./filmComponent";
 function StarWarsApp()
 {
     const [starwardata, setStarWarsData] = React.useState({});
@@ -14,32 +21,9 @@ function StarWarsApp()
         });
     }
     console.log(count);
-    let starPageInfo = ""
+    const result = DescriptionInfo(formData);
     //if statement to determine what is to be displayed to the user
-    if (formData.starWarProperty == "people")
-    {
-        starPageInfo = "people";
-    }
-    else if (formData.starWarProperty == "films")
-    {
-        starPageInfo = "films";
-    }
-    else if (formData.starWarProperty == "species")
-    {
-        starPageInfo = "species";
-    }
-    else if (formData.starWarProperty == "starships")
-    {
-        starPageInfo = "starships";
-    }
-    else if (formData.starWarProperty == "vehicles")
-    {
-        starPageInfo = "vehicles";
-    }
-    else
-    {
-        starPageInfo = "planets";
-    }
+    
 
     function handleChange(event)
     {
@@ -51,7 +35,6 @@ function StarWarsApp()
             }
         })
     };
-    const starVariable = formData.starWarProperty;
     React.useEffect(()=>{
         fetch(`https://swapi.dev/api/${formData.starWarProperty}/${count}`)
             .then(res => res.json())
@@ -62,6 +45,7 @@ function StarWarsApp()
         event.preventDefault();
         console.log(formData.starWarProperty);
     }
+
     return (
         <div>
             <section className="home">
@@ -88,19 +72,14 @@ function StarWarsApp()
                 <p>Change the information displayed by clicking the add button</p>
                 <p>Value Number is : {count}</p>
                 <button onClick={addCount}>Click To Change Data</button>
-
-                <div>
-                    <p>Information acquired from starwars api is <span id="info">{formData.starWarProperty}</span></p>
-                    <p>Details of {starPageInfo}</p>
-                    <p>Name : {starwardata.name}</p>
-                    <p>homeworld : {starwardata.height}</p>
-                </div>
+                {formData.starWarProperty === "people" && <PeopleComponent name={starwardata.name} homeworld={starwardata.homeworld} gender={starwardata.gender}/> }
+                {formData.starWarProperty === "planets" && <PlanetComponent name={starwardata.name} climate={starwardata.climate}  diameter={starwardata.diameter} population={starwardata.population} surface_water={starwardata.surface_water}/>}
+                {formData.starWarProperty === "species" && <SpeciesComponent name={starwardata.name} designation={starwardata.designation} classification={starwardata.classification} lifespan={starwardata.lifespan} language={starwardata.language} />}
+                {formData.starWarProperty === "starships" && <StarShipComponent starships={starwardata.name} model={starwardata.model} starship_class={starwardata.starship_class} cost_in_credits={starwardata.cost_in_credits} crew={starwardata.crew} passengers={starwardata.passengers} hyperdrive_rating={starwardata.hyperdrive_rating} />}
+                {formData.starWarProperty === "films" && <FilmComponent name={starwardata.title} director={starwardata.director} opening_crawl={starwardata.opening_crawl}  />}
+                {formData.starWarProperty === "vehicles" && <VehicleComponent name={starwardata.name} vehicle_class={starwardata.vehicle_class} manufacture={starwardata.manufacture} cost_in_credits={starwardata.cost_in_credits} length={starwardata.length}/>}
             </section>
-
-            
-        </div>
-       
-        
+        </div> 
     )
 };
 export default StarWarsApp;
