@@ -2,7 +2,7 @@ function StarShipComponent(props)
 {
     return (
         <div>
-            <p>Starship name : {props.Starships}</p>
+            <p>Starship name : {props.starships}</p>
             <p>Starship model : {props.model}</p>
             <p>Starship class: {props.starship_class}</p>
             <p>Starship cost: {props.cost_in_credits}</p>

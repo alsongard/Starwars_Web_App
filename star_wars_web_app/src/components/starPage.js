@@ -15,7 +15,6 @@ function Page()
         <div>
             <Header/>
             <StarWarsApp/>
-
         </div>
     )
 }
