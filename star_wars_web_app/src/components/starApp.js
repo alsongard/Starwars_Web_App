@@ -20,6 +20,12 @@ function StarWarsApp()
             return count + 1;
         });
     }
+    function subCount()
+    {
+        setCount((count)=>{
+            return count - 1;
+        })
+    }
     console.log(count);
     const result = DescriptionInfo(formData);
     //if statement to determine what is to be displayed to the user
@@ -45,14 +51,13 @@ function StarWarsApp()
         event.preventDefault();
         console.log(formData.starWarProperty);
     }
-
     return (
         <div>
-            <section className="home">
+            <section class="w-[80%] my-[20px] mx-auto p-[50px] border-2 border-white rounded-lg" className="home">
                 <div className="info-text">
-                    <h2>Welcome to Star Wars Web App where you can get all details of all the stars wars movies.</h2>
+                    <h2 class=" my-4 text-center sm:text-[16px] md:text-2xl">Welcome to Star Wars Web App where you can get all details of all the stars wars movies.</h2>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form class="w-[80%] p-[50px] mx-auto border-2 border-b-0 border-white" onSubmit={handleSubmit}>
                     <label>Select One of the options:</label>
                     <select name="starWarProperty" onChange={handleChange}>
                         <option value="">--Choose--</option>
@@ -63,7 +68,6 @@ function StarWarsApp()
                         <option value="vehicles">vehicles</option>
                         <option value="films">films</option>
                     </select>
-
                     <button>Submit</button>
                 </form>
             </section>
@@ -71,7 +75,9 @@ function StarWarsApp()
             <section className="getCharacter">
                 <p>Change the information displayed by clicking the add button</p>
                 <p>Value Number is : {count}</p>
-                <button onClick={addCount}>Click To Change Data</button>
+                <button class="bg-slate-400 px-3 mr-1 py-1 rounded" onClick={addCount}>Add Number</button>
+                <button class="bg-slate-400 px-3 py-1 rounded" onClick={subCount}>Subtract Number</button>
+
                 {formData.starWarProperty === "people" && <PeopleComponent name={starwardata.name} homeworld={starwardata.homeworld} gender={starwardata.gender}/> }
                 {formData.starWarProperty === "planets" && <PlanetComponent name={starwardata.name} climate={starwardata.climate}  diameter={starwardata.diameter} population={starwardata.population} surface_water={starwardata.surface_water}/>}
                 {formData.starWarProperty === "species" && <SpeciesComponent name={starwardata.name} designation={starwardata.designation} classification={starwardata.classification} lifespan={starwardata.lifespan} language={starwardata.language} />}
