@@ -1,7 +1,7 @@
 # STARWARS_WEB_APP
 
 ## Description
-This App will display character names, their attributes and films they are present by fetching data from the [star_wars_api](https://swapi.dev/)
+The **Star Wars Web App** is a dynamic web application that allows users to explore the vast Star Wars universe, including information about characters, planets, and starships from the famous franchise. This project was built with modern web technologies to deliver a responsive and interactive user experience. Data is fetched from the [star_wars_api](https://swapi.dev/)
 
 
 
