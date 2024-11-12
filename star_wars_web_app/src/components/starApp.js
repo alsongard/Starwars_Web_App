@@ -1,5 +1,5 @@
 import React from "react";
-import DescriptionInfo from "./descriptionInfo";
+// import DescriptionInfo from "./descriptionInfo";
 import PeopleComponent from "./peopleComponent";
 import VehicleComponent from "./vehicleComponent";
 import StarShipComponent from "./starsshipComponent";
@@ -27,7 +27,7 @@ function StarWarsApp()
         })
     }
     console.log(count);
-    const result = DescriptionInfo(formData);
+    // const result = DescriptionInfo(formData);
     //if statement to determine what is to be displayed to the user
     
 
